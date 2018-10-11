@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>
-    <%= csrf_meta_tags %>
+    <title><%= yield(:title) %></title>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Railsがデフォルトで生成するheadタグ パーシャル -->
+    <%= render 'layouts/rails_default' %>
+
+    <!-- IE9以前対応 パーシャル -->
+    <%= render 'layouts/shim' %>
+
   </head>
 
   <body>
-    <%= yield %>
+
+    <!-- ヘッダ パーシャル -->
+    <%= render 'layouts/header' %>
+
+    <!-- メインコンテンツ -->
+    <div class="container">
+      <%= yield %>
+
+      <!-- フッター パーシャル -->
+      <%= render 'layouts/footer' %>
+
+    </div>
   </body>
+
 </html>
