@@ -1,0 +1,15 @@
+<%= provide(:title, @user.name) %>
+
+<div class="row">
+	<aside class="col-md-4">					<!-- asideタグ 補足や脚注、用語の説明など、本筋とは別に触れておきたい内容-->
+		<section class="user_info">			<!-- sectionタグ 一般的なセクションを定義-->
+
+			<h1>
+				<!-- <%= gravatar_for @user %> -->
+				<%= @user.name %>
+			</h1>
+		
+		</section>
+	</aside>
+</div>
+
