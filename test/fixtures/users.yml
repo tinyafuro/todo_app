@@ -1,7 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   name: MyString
-
-# two:
-#   name: MyString
+michael:
+  name: Michael Example
+  password_digest: <%= User.digest('password') %>  #パスワードをハッシュ化する独自メソッドdigest
