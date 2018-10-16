@@ -166,10 +166,13 @@ input, textarea, select, .uneditable-input {
 input {
   height: 42px !important;
   border-radius: 100px;     //角丸設定
+  padding: 0px 0px 0px 20px;
+  width: 70%;
 }
 
 //Button
 .btn {
+  width: 30%;
   border-radius: 100px;
 }
 
