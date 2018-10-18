@@ -1,9 +1,10 @@
 <% provide(:title, "Home") %>
+<%= provide(:button_text, 'Log in') %>
 
 <div class="center jumbotron">
 
   <!-- ロゴ -->
-  <p><%= link_to image_tag("logo.png", size: '128x128', alt: "Icon"), '#' %></p>
+  <p><%= link_to image_tag("harry01.png", size: '128x128', alt: "Icon"), '#' %></p>
 
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
@@ -12,7 +13,7 @@
         <%= form_for(:session, url: login_path ) do |f| %>
           <%= f.text_field :name, :maxlength => "20", :placeholder => "Name"%>
           <%= f.password_field :password, :placeholder => "Password" %>
-          <%= f.submit "Log in", class: "btn btn-primary" %>
+          <%= f.submit yield(:button_text), class: "btn btn-primary" %>
         <% end %>
 
       <!-- サインイン -->

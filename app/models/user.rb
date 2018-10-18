@@ -4,13 +4,13 @@ class User < ApplicationRecord
 	before_save { name.downcase! }
 
 	#name属性 バリデーション
-	validates :name, presence: true, length: {maximum:20}, uniqueness: { case_sensitive: false }
+	validates :name, presence: true, length: {maximum:30}, uniqueness: { case_sensitive: false }
 
 	#セキュアなパスワード設定
 	has_secure_password
 
 	#パスワード バリデーション
-	validates :password, presence: true, length: { minimum:6}
+	validates :password, presence: true, length: { minimum:6 }, allow_nil: true
 
 	#渡された文字列のハッシュ値を返す
 	def User.digest(string)

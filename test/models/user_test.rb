@@ -19,7 +19,7 @@ class UserTest < ActiveSupport::TestCase
 
   #name属性文字数上限テスト
   test "name should not be too long" do
-    @user.name = "a" * 21
+    @user.name = "a" * 31
     assert_not @user.valid?
   end
 

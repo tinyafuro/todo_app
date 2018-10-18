@@ -1,0 +1,13 @@
+<!-- newとeditフォーム用パーシャル -->
+
+<%= form_for(@user) do |f| %>
+
+	<%= render 'shared/error_messages' %>
+
+	<div class="center jumbotron">
+		<%= f.text_field :name, :maxlength => "20", :placeholder => "Name"%>
+		<%= f.password_field :password, :placeholder => "Password" %>
+		<%= f.password_field :password_confirmation, :placeholder => "Password" %>
+		<%= f.submit yield(:button_text), class: "btn btn-primary" %>
+	</div>
+<% end %>
