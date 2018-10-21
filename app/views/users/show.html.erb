@@ -8,8 +8,32 @@
 				<!-- <%= gravatar_for @user %> -->
 				<%= @user.name %>
 			</h1>
+
+			<!-- Task投稿フォーム -->
+			<div class="row">
+    		<aside class="col-md-4">
+      		<section class="user_info">
+        		<%= render 'shared/user_info' %>
+      		</section>
+      		<section class="task_form">
+        		<%= render 'shared/task_form' %>
+      		</section>
+    		</aside>
+  		</div>
 		
 		</section>
 	</aside>
+
+	<!-- Task表示領域 -->
+	<div class="col-md-8">
+    <% if @user.tasks.any? %>
+      <h3>Tasks (<%= @user.tasks.count %>)</h3>
+      <ol class="tasks">
+        <%= render @tasks %>
+      </ol>
+      <%= will_paginate @tasks %>
+    <% end %>
+  </div>
+	
 </div>
 

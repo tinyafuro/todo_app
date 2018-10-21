@@ -4,19 +4,25 @@ class UsersController < ApplicationController
   before_action :correct_user,    only: [:edit, :update]
   before_action :admin_user,      only: [:index, :destroy]
 
-  #ユーザー一覧はadmin権限がないと表示できない
+  #ユーザー一覧（admin権限がないと表示できない）
   def index
       @users = User.paginate(page: params[:page])
   end
 
+  #ユーザー個別ページ（ログイン中でないと表示できない）
   def show
     @user = User.find(params[:id])
+    @tasks = @user.tasks.paginate(page: params[:page])
+    # @task = @user.tasks.build if logged_in?
+    @task = @user.tasks.build
   end
   
+  #ユーザー新規作成画面表示時
   def new
     @user = User.new
   end
 
+  #ユーザー新規作成時
   def create
     @user = User.new(user_params)
     if @user.save
@@ -54,15 +60,6 @@ class UsersController < ApplicationController
     end
 
     #beforeアクション
-
-    #ログイン済みユーザーかどうか確認
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
 
     #正しいユーザーかどうか確認
     def correct_user

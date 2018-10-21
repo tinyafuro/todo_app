@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	has_many :tasks, dependent: :destroy
 
 	#name属性は小文字に強制変換してから保存
 	before_save { name.downcase! }

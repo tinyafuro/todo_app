@@ -51,4 +51,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  #ユーザー削除とともに紐づいたTaskも削除されるテスト
+  test "associated tasks should be destroyed" do
+    @user.save
+    @user.tasks.create!(content: "Lorem ipsum")
+    assert_difference 'Task.count', -1 do
+      @user.destroy
+    end
+  end
+
 end
