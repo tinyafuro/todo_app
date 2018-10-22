@@ -8,6 +8,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", help_path %></li>
+        <li><%= link_to "Tasks", tasks_path %></li> <!-- タスク一覧 -->
         <% if logged_in? %>
           <% if admin_check?%>  <!-- sessions_helperで定義したadmin_check?メソッド -->
             <li><%= link_to "Users", users_path %></li>
