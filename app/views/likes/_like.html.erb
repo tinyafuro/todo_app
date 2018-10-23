@@ -1,0 +1,26 @@
+<!-- 自分のタスク以外の場合にいいねアイコン表示 -->
+<% if !current_user?(task.user) %>
+
+	<span class="like">
+
+		<!-- いいね済みの場合 いいね取り消す -->
+		<% if task.iine?(current_user) %>
+			<%= form_for(task.likes.find_by(user_id: current_user.id), method: :delete, remote: true) do |f| %>
+				<%= button_tag(class: "btn btn-default btn-xs") do %>
+					<%= content_tag :span, "#{task.likes_count}", class: "glyphicon glyphicon-heart" %>
+				<% end %>
+			<% end %>
+		
+		<!-- いいねしていない場合 いいね追加 -->
+		<% else %>
+			<%= form_for(task.likes.build, remote: true) do |f| %>
+				<div><%= hidden_field_tag :task_id, task.id %></div>
+				<%= button_tag(class: "btn btn-default tn-xs") do %>
+					<%= content_tag :span, "#{task.likes_count}", class: "glyphicon glyphicon-heart-empty" %>
+				<% end %>
+			<% end %>
+		<% end %>
+
+	</span>
+
+<% end %>
