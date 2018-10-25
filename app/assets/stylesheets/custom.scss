@@ -236,6 +236,16 @@ input {
     margin-right: 10px;
     margin-top: 5px;
   }
+
+  ul {
+    float: right;
+    list-style: none;
+  }
+  
+  ul li {
+    float: left;
+    margin-left: 15px;
+  }
 }
 
 aside {
@@ -250,4 +260,28 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+
+/* Font Awesome */
+.my-skyblue {color: skyblue}
+.my-gray{color: gray}
+.my-orange{color: #fecb81}
+
+
+
+
+
+
+
+/* uplabs */
+
+body {
+  background: skyblue;
+}
+
+
+/* チェックボックスで取り消し線 */
+.strikethrough:checked + label {
+  text-decoration:line-through
 }
