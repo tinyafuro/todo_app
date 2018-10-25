@@ -1,95 +1,24 @@
-
-
-
 <li id="task-<%= task.id %>">
     <% if current_user?(task.user) %>
 
       <!-- チェックボックス -->
-      <!--
-      <%= check_box_tag(:task) %>
-      <span class="content"><%= task.content %></span>
-      -->
+      <%= link_to task, method: :put, data: { confirm: "Done?"} do %>
+        <i class="far fa-circle"></i>
+      <% end %>
 
-      <!-- チェックボックス 取り消し線 -->
-      <!--
-      <input name="taskOff" class="strikethrough" value="1" type="checkbox">
-      <label for="taskOff"><%= task.content %></label>
-      -->
-
-      <%= check_box_tag :check %>
-      <%= submit "アカウントを作成する", id: "content" %>
-
+      <!-- タスクの内容 -->
+      <%= task.content %>
 
       <!-- Task削除ボタン -->
       <%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
-        <i class="far fa-times-circle fa-2x my-gray"></i>
+        <i class="far fa-times-circle"></i>
       <% end %>
 
     <!-- 他人のタスク表示時 -->
     <% else %>
-
       <span class="content"><%= task.content %></span>
     <% end %>
 
   <%= render "likes/like", task: task %>
 
 </li>
-
-
-
-
-
-<!--
-
-
-  <span class="user"><%= link_to task.user.name, task.user %></span> 
-  <span class="content"><%= task.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(task.created_at) %> ago. 
-
-
-<li id="task-<%= task.id %>">
-
-  <span class="content">
-		<% if current_user?(task.user) %>
-
-			<%= check_box_tag(:task) %>
-			<%= label_tag(:task, task.content) %>
-
-      <%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
-				<i class="far fa-times-circle fa-fw"></i>
-			<% end %>
-
-		<% else %>
-
-			<%= task.content %>
-
-    <% end %>
-	</span>
-  <%= render "likes/like", task: task %>
-
--->
-
-
-<!-- 
-
-<ul>
-  <li>
-    <a href="" class="check_button" onmousedown="return false">
-      <i class="fa fa-circle-thin" aria-hidden="true"></i>
-    </a>
-  </li>
-  <li>
-    <div class="right">
-      <p contenteditable="true">Conquer the Galaxy</p>
-    </div>
-  </li>
-  <li>
-    <span class="delete_button" onmousedown='return false'>
-    <i class="fa fa-times-circle" aria-hidden="true"></i>
-    </span>
-  </li>
-</ul>
-
-
--->

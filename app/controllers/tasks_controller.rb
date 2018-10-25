@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
-  before_action :logged_in_user,  only: [:index, :create, :destroy]
-  before_action :correct_user,    only: :destroy
+  before_action :logged_in_user,  only: [:index, :create, :update, :destroy]
+  before_action :correct_user,    only: [:update, :destroy]
 
   #すべてのユーザータスク一覧
   def index
-    @tasks = Task.paginate(page: params[:page])
+    @tasks = Task.where(done: false).paginate(page: params[:page])
   end
 
   def create
@@ -27,11 +27,26 @@ class TasksController < ApplicationController
     redirect_to request.referrer || root_url
   end
 
+  def update
+    @task = current_user.tasks.find(params[:id])
+    #未チェックの場合
+    unless @task.done
+      @task.update_attributes(done: true)
+      flash[:success] = "Task done!"
+    #チェック済みの場合
+    else 
+      @task.update_attributes(done: false)
+      flash[:error] = "Task un done!"
+    end
+    redirect_to request.referrer || root_url
+  end
+
   private
 
     def task_params
       params.require(:task).permit(:content)
     end
+
 
     def correct_user
       @task = current_user.tasks.find_by(id: params[:id])

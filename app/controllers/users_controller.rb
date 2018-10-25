@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   #ユーザー個別ページ（ログイン中でないと表示できない）
   def show
     @user = User.find(params[:id])
-    @tasks = @user.tasks.paginate(page: params[:page])
+    @tasks = @user.tasks.where(done: false).paginate(page: params[:page])
     # @task = @user.tasks.build if logged_in?
     @task = @user.tasks.build
   end
