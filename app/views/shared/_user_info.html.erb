@@ -1,3 +1,8 @@
+<!--
 <h1><%= @user.name %></h1>
 <span><%= link_to "view my profile", current_user %></span>
-<span><%= pluralize(@user.tasks.count, "task") %></span>
+-->
+
+<span>Total<%= pluralize(@user.tasks.count, "task") %></span>
+<span>Remaining<%= pluralize(@user.tasks.where(done: false).count, "task") %></span>
+<span>Done<%= pluralize(@user.tasks.where(done: true).count, "task") %></span>

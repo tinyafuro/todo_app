@@ -6,8 +6,9 @@
         <i class="far fa-circle"></i>
       <% end %>
 
-      <!-- タスクの内容 -->
       <%= task.content %>
+
+
 
       <!-- Task削除ボタン -->
       <%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>

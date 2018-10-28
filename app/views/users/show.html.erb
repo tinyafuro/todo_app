@@ -3,6 +3,11 @@
 <div class="row">
 	<aside class="col-md-4">					<!-- asideタグ 補足や脚注、用語の説明など、本筋とは別に触れておきたい内容-->
 		<section class="user_info">			<!-- sectionタグ 一般的なセクションを定義-->
+		</section>
+	</aside>
+
+	<div class="row">
+		<aside class="col-md-4">
 
 			<h1>
 				<!-- <%= gravatar_for @user %> -->
@@ -10,19 +15,15 @@
 			</h1>
 
 			<!-- Task投稿フォーム -->
-			<div class="row">
-    		<aside class="col-md-4">
-      		<section class="user_info">
-        		<%= render 'shared/user_info' %>
-      		</section>
-      		<section class="task_form">
-        		<%= render 'shared/task_form' %>
-      		</section>
-    		</aside>
-  		</div>
-		
-		</section>
-	</aside>
+			<section class="user_info">
+				<%= render 'shared/user_info' %>
+			</section>
+			<section class="task_form">
+				<%= render 'shared/task_form' %>
+			</section>
+
+		</aside>
+	</div>
 
 	<!-- Task表示領域 -->
 	<div class="col-md-8">
