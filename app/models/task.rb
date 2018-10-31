@@ -22,4 +22,9 @@ class Task < ApplicationRecord
     iine_users.include?(user)
   end
 
+  #現在のタスクが完了済みだったらTrue返す
+  def done?(task)
+    task.done
+  end
+
 end

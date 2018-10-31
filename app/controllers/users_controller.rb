@@ -25,6 +25,9 @@ class UsersController < ApplicationController
   #ユーザー新規作成時
   def create
     @user = User.new(user_params)
+    if @user.name == "administrator"
+      @user.admin = true
+    end
     if @user.save
       log_in @user
       flash[:success] = "Welcom to the Sample App!"

@@ -2,18 +2,39 @@
     <% if current_user?(task.user) %>
 
       <!-- チェックボックス -->
+      <!--
       <%= link_to task, method: :put, data: { confirm: "Done?"} do %>
         <i class="far fa-circle"></i>
       <% end %>
-
-      <%= task.content %>
-
+      -->
 
 
-      <!-- Task削除ボタン -->
-      <%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
-        <i class="far fa-times-circle"></i>
+      <!-- タスク完了済み -->
+      <% if task.done %>
+        <%= form_for(task, method: :put, remote: true) do |f| %>
+          <%= button_tag(class: "btn transparent_btn") do %>
+            <i class="far fa-check-circle"></i>
+          <% end %>
+          <span class=strikethrough>
+            <span id=task_text_body><%= task.content %></span>
+          </span>
+        <% end %>
+      <!-- タスク未完了 -->
+      <% else %>
+        <%= form_for(task, method: :put, remote: true) do |f| %>
+          <%= button_tag(class: "btn transparent_btn") do %>
+            <i class="far fa-circle"></i>
+          <% end %>
+          <span id=task_text_body><%= task.content %></span>
+          <!-- Task削除ボタン -->
+          <%= link_to task, method: :delete, data: { confirm: "You sure?" } do %>
+            <i class="far fa-times-circle"></i>
+          <% end %>
+        <% end %>
       <% end %>
+
+
+
 
     <!-- 他人のタスク表示時 -->
     <% else %>

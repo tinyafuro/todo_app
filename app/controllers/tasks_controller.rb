@@ -29,16 +29,30 @@ class TasksController < ApplicationController
 
   def update
     @task = current_user.tasks.find(params[:id])
+    @user = current_user
     #未チェックの場合
     unless @task.done
       @task.update_attributes(done: true)
-      flash[:success] = "Task done!"
+      #flash[:success] = "Task done!"
+      
+      #Ajaxリクエスト対応
+      respond_to do |format|
+        format.html { redirect_to @user }
+        format.js
+      end
+
     #チェック済みの場合
     else 
       @task.update_attributes(done: false)
-      flash[:error] = "Task un done!"
+      #flash[:error] = "Task un done!"
+
+      #Ajaxリクエスト対応
+      respond_to do |format|
+        format.html { redirect_to @user }
+        format.js
+      end
     end
-    redirect_to request.referrer || root_url
+    #redirect_to request.referrer || root_url
   end
 
   private

@@ -272,8 +272,6 @@ span.picture {
 
 
 
-
-
 /* uplabs */
 
 body {
@@ -286,6 +284,39 @@ body {
   text-decoration:line-through
 }
 
+/* 取り消し線 */
+.strikethrough {
+  text-decoration:  line-through;
+  font-style: italic;
+  color:  gray;
+}
+
+/* 背景なしボタン */
+.transparent_btn {
+  background-color: rgba(0, 0, 0, 0);
+  width: 32px;
+  text-align: center;
+  &:hover {
+    background-color: rgba(28, 100, 167, 0.123);
+  }
+}
+
+/* タスクのテキスト */
+#task_text_body {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 
 
 
+
+/* タスク合計値、完了済みタスク合計値など */
+.user_info {
+  display: table;
+  width: 100%;
+}
+.user_info_item {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}

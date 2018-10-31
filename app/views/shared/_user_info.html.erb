@@ -1,8 +1,20 @@
-<!--
-<h1><%= @user.name %></h1>
-<span><%= link_to "view my profile", current_user %></span>
--->
-
-<span>Total<%= pluralize(@user.tasks.count, "task") %></span>
-<span>Remaining<%= pluralize(@user.tasks.where(done: false).count, "task") %></span>
-<span>Done<%= pluralize(@user.tasks.where(done: true).count, "task") %></span>
+<ul class="user_info">
+	<li class="user_info_item">
+		<p>Total<span class="task_total"><%= @user.tasks.count %></span></p>
+	</li>
+	<li class="user_info_item">
+		<p>Remaining<span class="task_remaining"><%= @user.tasks.where(done: false).count %></span></p>
+	</li>
+	<li class="user_info_item">
+		<p>Done<span class="task_done"><%= @user.tasks.where(done: true).count %></span></p>
+	</li>
+	<li class="user_info_item">
+		<p>Like:<span class="user_iine">
+			<% sum = 0 %>
+			<% @user.tasks.each do |task| %>
+				<% sum = sum + task.likes_count %>
+			<% end %>
+			<%= sum %>
+		</span></p>
+	</li>
+</ul>
