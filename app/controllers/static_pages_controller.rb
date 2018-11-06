@@ -15,7 +15,7 @@ class StaticPagesController < ApplicationController
   end
 
   def unity
-    render :text => "Unity and Rails!"
+    render plain: "Rails to Unity Test!"
   end
   
 end
