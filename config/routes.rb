@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :tasks, only: [:index, :create, :update, :destroy]
   resources :likes, only: [:create, :destroy]
+
+  get '/unity', to: 'static_pages#unity'
   
 end
