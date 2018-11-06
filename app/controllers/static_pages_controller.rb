@@ -15,7 +15,10 @@ class StaticPagesController < ApplicationController
   end
 
   def unity
-    render plain: "Rails to Unity Test!"
+    #render plain: "Rails to Unity Test!"
+    # render :text => "Rails to Unity Test!"
+
+    @unity = User.first
   end
   
 end
