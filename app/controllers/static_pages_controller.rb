@@ -11,7 +11,7 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-    render :text "unity and rails"
+    render :text => "Unity and Rails!"
   end
   
 end
